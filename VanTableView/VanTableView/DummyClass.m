@@ -13,6 +13,21 @@
 @synthesize isModified;
 @synthesize stringA, stringB;
 
+
+NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+-(NSString *) genRandStringLength: (int) len {
+    
+    NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
+    
+    for (int i=0; i<len; i++) {
+        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random() % [letters length]]];
+    }
+    
+    return randomString;
+}
+
+
 -(id)init
 {
     self = [super init];
@@ -21,6 +36,8 @@
         isModified = NO;
         stringA = [NSMutableString new];
         stringB = [NSMutableString new];
+        [stringA setString: [self genRandStringLength: 10]];
+        [stringB setString: [self genRandStringLength: 5]];
     }
     return self;
 }

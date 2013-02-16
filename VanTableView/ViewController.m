@@ -35,7 +35,7 @@
 }
 -(void)unitTest
 {
-    [unitTest_ testObjectStrictMode:NO];
+    [unitTest_ testObjectRoundedStrictMode:NO];
     
 }
 
@@ -75,6 +75,7 @@
     
     DummyClass * dummy = [unitTest_.array objectAtIndex:indexPath.row];
     [cell.textLabel setText: dummy.stringA];
+    [cell.detailTextLabel setText: dummy.stringB];
     
     return cell;
 }

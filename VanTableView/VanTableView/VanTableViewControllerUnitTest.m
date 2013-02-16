@@ -19,6 +19,7 @@
     self = [super init];
     if (self)
     {
+        controller_ = [[VanTableController alloc] init];
         array = [NSMutableArray new];
         indexPathDelete = [NSMutableArray new];
         indexPathInsert = [NSMutableArray new];
@@ -29,6 +30,7 @@
 
 -(void)dealloc
 {
+    [controller_ release];
     [array release];
     [indexPathDelete release];
     [indexPathInsert release];
@@ -184,8 +186,150 @@
     
     /// END
     
-    [VanTableController release];
+    [controller release];
 }
+
+
+
+
+
+
+
+
+
+
+
+
+-(void)testObjectRoundedStrictMode:(BOOL)isStrictMode
+{
+    controller_.dataCriteria = self;
+    controller_.delegate = self;
+    controller_.isStrictMode = isStrictMode;
+    
+    [self performSelector:@selector(testObjectRound_1_StrictMode:) withObject:nil afterDelay:1.0];
+    [self performSelector:@selector(testObjectRound_2_StrictMode:) withObject:nil afterDelay:3.0];
+    [self performSelector:@selector(testObjectRound_3_StrictMode:) withObject:nil afterDelay:5.0];
+    [self performSelector:@selector(testObjectRound_4_StrictMode:) withObject:nil afterDelay:7.0];
+    
+    /// END
+}
+
+-(void)testObjectRound_1_StrictMode:(BOOL)isStrictMode
+{
+    ///// ROUND 1 - INSERT OBJ
+    
+    for (int i = 0; i < 5; i++)
+    {
+        DummyClass * dummy = [[DummyClass alloc] init];
+        
+        [dummy addObserver:self forKeyPath:@"stringA" options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) context:nil];
+        
+        [array addObject: dummy];
+    }
+    
+    [controller_ manipulateArray: array];
+}
+
+-(void)testObjectRound_2_StrictMode:(BOOL)isStrictMode
+{
+
+    ///// ROUND 2 - DELETE OBJ , THEN INSERT OBJ
+    
+    [array removeObjectAtIndex:2];
+    [array removeObjectAtIndex:0];
+    
+    for (int i = 0; i < 5; i++)
+    {
+        DummyClass * dummy = [[DummyClass alloc] init];
+        
+        [dummy addObserver:self forKeyPath:@"stringA" options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) context:nil];
+        
+        [array addObject: dummy];
+    }
+    
+    for (int i = 0; i < 5; i++)
+    {
+        DummyClass * dummy = [[DummyClass alloc] init];
+        
+        [dummy addObserver:self forKeyPath:@"stringA" options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) context:nil];
+        
+        [array insertObject: dummy atIndex:0];
+    }
+    
+    [controller_ manipulateArray: array];
+}
+
+-(void)testObjectRound_3_StrictMode:(BOOL)isStrictMode
+{
+
+    ///// ROUND 3 - MODIFY OBJ
+    
+    [array setArray: array];
+    DummyClass * dummy__ = [array objectAtIndex:2];
+    [dummy__.stringA setString: @"ASJKANSDJKSAD"];
+    dummy__.isModified = YES;
+    
+    [controller_ manipulateArray: array];
+}
+
+-(void)testObjectRound_4_StrictMode:(BOOL)isStrictMode
+{
+
+
+    
+    ///// ROUND 4 - DELETE, INSERT, MODIFY OBJ
+    
+    
+    
+    
+    [array removeObjectAtIndex:12];
+    [array removeObjectAtIndex:11];
+    [array removeObjectAtIndex:9];
+    [array removeObjectAtIndex:7];
+    
+    for (int i = 0; i < 5; i++)
+    {
+        DummyClass * dummy = [[DummyClass alloc] init];
+        
+        [dummy addObserver:self forKeyPath:@"stringA" options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) context:nil];
+        
+        [array addObject: dummy];
+    }
+    
+    for (int i = 0; i < 5; i++)
+    {
+        DummyClass * dummy = [[DummyClass alloc] init];
+        
+        [dummy addObserver:self forKeyPath:@"stringA" options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) context:nil];
+        
+        [array insertObject: dummy atIndex:0];
+    }
+    
+    
+    [array setArray: array];
+    DummyClass * dummy__ = [array objectAtIndex:3];
+    [dummy__.stringA setString: @"ASJKANSDJKSAD"];
+    dummy__.isModified = YES;
+    
+    dummy__ = [array objectAtIndex:5];
+    [dummy__.stringB setString: @"ASJKANSDJKSAD"];
+    dummy__.isModified = YES;
+    
+    [controller_ manipulateArray: array];
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 -(BOOL)VanTableControllerDataIsModified:(NSObject*)object

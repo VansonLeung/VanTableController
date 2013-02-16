@@ -14,7 +14,9 @@
 @interface VanTableViewControllerUnitTest : NSObject
 <VanTableControllerDataCriteria,
 VanTableControllerDelegate>
-
+{
+    VanTableController * controller_;
+}
 @property (nonatomic, assign) NSMutableArray * array;
 @property (nonatomic, assign) NSMutableArray * indexPathDelete;
 @property (nonatomic, assign) NSMutableArray * indexPathInsert;
@@ -22,5 +24,6 @@ VanTableControllerDelegate>
 
 -(void)testStringStrictMode:(BOOL)isStrictMode;
 -(void)testObjectStrictMode:(BOOL)isStrictMode;
+-(void)testObjectRoundedStrictMode:(BOOL)isStrictMode;
 
 @end
