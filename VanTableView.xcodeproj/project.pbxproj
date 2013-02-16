@@ -18,6 +18,10 @@
 		D288620216CF730200307652 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D288620116CF730200307652 /* Default-568h@2x.png */; };
 		D288620516CF730200307652 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D288620416CF730200307652 /* ViewController.m */; };
 		D288620816CF730200307652 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D288620616CF730200307652 /* ViewController.xib */; };
+		D288621116CF735600307652 /* VanTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = D288621016CF735600307652 /* VanTableController.m */; };
+		D288621416CF772E00307652 /* VanArrayComparer.m in Sources */ = {isa = PBXBuildFile; fileRef = D288621316CF772E00307652 /* VanArrayComparer.m */; };
+		D288622016CF7A1400307652 /* VanTableViewControllerUnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D288621F16CF7A1400307652 /* VanTableViewControllerUnitTest.m */; };
+		D288622316CF7DAA00307652 /* DummyClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D288622216CF7DAA00307652 /* DummyClass.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +41,15 @@
 		D288620316CF730200307652 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		D288620416CF730200307652 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D288620716CF730200307652 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		D288620F16CF735600307652 /* VanTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VanTableController.h; sourceTree = "<group>"; };
+		D288621016CF735600307652 /* VanTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VanTableController.m; sourceTree = "<group>"; };
+		D288621216CF772E00307652 /* VanArrayComparer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VanArrayComparer.h; sourceTree = "<group>"; };
+		D288621316CF772E00307652 /* VanArrayComparer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VanArrayComparer.m; sourceTree = "<group>"; };
+		D288621D16CF792600307652 /* VLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VLog.h; sourceTree = "<group>"; };
+		D288621E16CF7A1400307652 /* VanTableViewControllerUnitTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VanTableViewControllerUnitTest.h; sourceTree = "<group>"; };
+		D288621F16CF7A1400307652 /* VanTableViewControllerUnitTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VanTableViewControllerUnitTest.m; sourceTree = "<group>"; };
+		D288622116CF7DAA00307652 /* DummyClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DummyClass.h; sourceTree = "<group>"; };
+		D288622216CF7DAA00307652 /* DummyClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DummyClass.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +96,7 @@
 		D28861F116CF730200307652 /* VanTableView */ = {
 			isa = PBXGroup;
 			children = (
+				D288620E16CF731900307652 /* VanTableView */,
 				D28861FA16CF730200307652 /* AppDelegate.h */,
 				D28861FB16CF730200307652 /* AppDelegate.m */,
 				D288620316CF730200307652 /* ViewController.h */,
@@ -105,6 +119,22 @@
 				D288620116CF730200307652 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D288620E16CF731900307652 /* VanTableView */ = {
+			isa = PBXGroup;
+			children = (
+				D288620F16CF735600307652 /* VanTableController.h */,
+				D288621016CF735600307652 /* VanTableController.m */,
+				D288621216CF772E00307652 /* VanArrayComparer.h */,
+				D288621316CF772E00307652 /* VanArrayComparer.m */,
+				D288621D16CF792600307652 /* VLog.h */,
+				D288621E16CF7A1400307652 /* VanTableViewControllerUnitTest.h */,
+				D288621F16CF7A1400307652 /* VanTableViewControllerUnitTest.m */,
+				D288622116CF7DAA00307652 /* DummyClass.h */,
+				D288622216CF7DAA00307652 /* DummyClass.m */,
+			);
+			path = VanTableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +206,10 @@
 				D28861F816CF730200307652 /* main.m in Sources */,
 				D28861FC16CF730200307652 /* AppDelegate.m in Sources */,
 				D288620516CF730200307652 /* ViewController.m in Sources */,
+				D288621116CF735600307652 /* VanTableController.m in Sources */,
+				D288621416CF772E00307652 /* VanArrayComparer.m in Sources */,
+				D288622016CF7A1400307652 /* VanTableViewControllerUnitTest.m in Sources */,
+				D288622316CF7DAA00307652 /* DummyClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
