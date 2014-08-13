@@ -10,12 +10,15 @@
 
 #import "ViewController.h"
 
+#import "MenuViewController.h"
+
 @implementation AppDelegate
 
 - (void)dealloc
 {
     [_window release];
     [_viewController release];
+    [_menuViewController release];
     [super dealloc];
 }
 
@@ -23,8 +26,8 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
-    self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
-    self.window.rootViewController = self.viewController;
+    self.menuViewController = [[[MenuViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
+    self.window.rootViewController = self.menuViewController;
     [self.window makeKeyAndVisible];
     
     return YES;
