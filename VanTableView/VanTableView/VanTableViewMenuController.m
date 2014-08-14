@@ -141,45 +141,68 @@
     {
         if (targetItem.isExpanded)
         {
-            for (int j = [self.array count] - 1; j >= 0; j--)
-            {
-                VanTableViewMenuItem * item = [self.array objectAtIndex: j];
-                if ([item.childOf isEqualToString: targetItem.key])
-                {
-                    [self.array removeObjectAtIndex: j];
-                }
-            }
-            
-            targetItem.isExpanded = NO;
-            targetItem.isModified = YES;
+            [self collapseTargetItem: targetItem];
         }
         else
         {
-            NSString * childGroupName = targetItem.next;
-            NSArray * childItems = [self.menus objectForKey: childGroupName];
-            for (int j = [childItems count] - 1; j >= 0; j--)
-            {
-                VanTableViewMenuItem * childItem = [childItems objectAtIndex:j];
-                [childItem.childOf setString: targetItem.key];
-                [childItem.groupName setString: childGroupName];
-                [self.array insertObject: childItem atIndex: targetIndex + 1];
-            }
-            
-            if ([childItems count] > 0)
-            {
-                targetItem.isExpanded = YES;
-            }
-            else
-            {
-                targetItem.isExpanded = NO;
-            }
-            targetItem.isModified = YES;
+            [self expandTargetItem: targetItem targetIndex: targetIndex];
         }
-        
-        [controller_ manipulateArray: self.array];
     }
 }
 
+-(void)expandTargetItem:(VanTableViewMenuItem *)targetItem targetIndex:(int)targetIndex
+{
+    NSString * childGroupName = targetItem.next;
+    NSArray * childItems = [self.menus objectForKey: childGroupName];
+    for (int j = [childItems count] - 1; j >= 0; j--)
+    {
+        VanTableViewMenuItem * childItem = [childItems objectAtIndex:j];
+        [childItem.childOf setString: targetItem.key];
+        [childItem.groupName setString: childGroupName];
+        
+        if (j == [childItems count] - 1)
+        {
+            childItem.isLast = YES;
+        }
+        
+        else if (j == 0)
+        {
+            childItem.isFirst = YES;
+        }
+        
+        [self.array insertObject: childItem atIndex: targetIndex + 1];
+    }
+    
+    if ([childItems count] > 0)
+    {
+        targetItem.isExpanded = YES;
+    }
+    else
+    {
+        targetItem.isExpanded = NO;
+    }
+    targetItem.isModified = YES;
+
+    [controller_ manipulateArray: self.array];
+}
+
+
+-(void)collapseTargetItem:(VanTableViewMenuItem *)targetItem
+{
+    for (int j = [self.array count] - 1; j >= 0; j--)
+    {
+        VanTableViewMenuItem * item = [self.array objectAtIndex: j];
+        if ([item.childOf isEqualToString: targetItem.key])
+        {
+            [self.array removeObjectAtIndex: j];
+        }
+    }
+    
+    targetItem.isExpanded = NO;
+    targetItem.isModified = YES;
+    
+    [controller_ manipulateArray: self.array];
+}
 
 
 
@@ -206,7 +229,7 @@
     {
         [self.tableView beginUpdates];
         [self.tableView deleteRowsAtIndexPaths: self.indexPathDelete withRowAnimation:UITableViewRowAnimationFade];
-        [self.tableView insertRowsAtIndexPaths: self.indexPathInsert withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView insertRowsAtIndexPaths: self.indexPathInsert withRowAnimation:UITableViewRowAnimationBottom];
         [self.tableView reloadRowsAtIndexPaths: self.indexPathReload withRowAnimation:UITableViewRowAnimationFade];
         [self.tableView endUpdates];
     }

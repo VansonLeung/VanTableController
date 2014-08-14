@@ -16,4 +16,6 @@
 @property (nonatomic, retain) NSMutableString * groupName;
 @property (nonatomic, readwrite) BOOL isExpanded;
 @property (nonatomic, readwrite) BOOL isModified;
+@property (nonatomic, readwrite) BOOL isFirst;
+@property (nonatomic, readwrite) BOOL isLast;
 @end

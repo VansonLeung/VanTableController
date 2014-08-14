@@ -71,7 +71,21 @@
     {
         uint uIndex = [index unsignedIntValue];
         NSIndexPath * indexPath = [NSIndexPath indexPathForRow:uIndex inSection:0];
-        [indexPathReload addObject:indexPath];
+        
+        BOOL isUnique = YES;
+        for (NSIndexPath * _indexPath in indexPathDelete)
+        {
+            if (indexPath.length == _indexPath.length && indexPath.section == _indexPath.section && indexPath.row == _indexPath.row)
+            {
+                isUnique = NO;
+                break;
+            }
+        }
+        
+        if (isUnique)
+        {
+            [indexPathReload addObject:indexPath];
+        }
     }
     
     VLog(@"D %@ I %@ R %@", indexPathDelete, indexPathInsert, indexPathReload);
