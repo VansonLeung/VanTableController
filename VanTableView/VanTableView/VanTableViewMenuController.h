@@ -16,6 +16,7 @@
 
 -(void)startMenuFromRoot;
 -(void)toggleMenuItemWithKey:(NSString*)key withinGroupNamed:(NSString*)groupName;
+-(void)refreshMenuItemWithKey:(NSString*)key withinGroupNamed:(NSString*)groupName;
 
 -(void)expandTargetItem:(VanTableViewMenuItem *)targetItem targetIndex:(int)targetIndex;
 -(void)collapseTargetItem:(VanTableViewMenuItem *)targetItem;

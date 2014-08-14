@@ -11,10 +11,9 @@
 		2117A9FB199AD492006A9BAF /* VanTableViewMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2117A9FA199AD492006A9BAF /* VanTableViewMenuItem.m */; };
 		2117A9FE199AD4DF006A9BAF /* VanTableViewFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2117A9FD199AD4DF006A9BAF /* VanTableViewFoundation.m */; };
 		2117AA01199ADE3F006A9BAF /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2117AA00199ADE3F006A9BAF /* MenuViewController.m */; };
-		2185829D199B9FE60078A5E9 /* shadow_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 21858299199B9FE60078A5E9 /* shadow_top.png */; };
-		2185829E199B9FE60078A5E9 /* shadow_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 2185829A199B9FE60078A5E9 /* shadow_bottom.png */; };
-		2185829F199B9FE60078A5E9 /* shadow_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2185829B199B9FE60078A5E9 /* shadow_bottom@2x.png */; };
-		218582A0199B9FE60078A5E9 /* shadow_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2185829C199B9FE60078A5E9 /* shadow_top@2x.png */; };
+		218582A4199C5BF10078A5E9 /* shadow_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 218582A1199C5BF10078A5E9 /* shadow_top.png */; };
+		218582A5199C5BF10078A5E9 /* shadow_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 218582A2199C5BF10078A5E9 /* shadow_bottom.png */; };
+		218582A6199C5BF10078A5E9 /* menu_separator.png in Resources */ = {isa = PBXBuildFile; fileRef = 218582A3199C5BF10078A5E9 /* menu_separator.png */; };
 		D28861EC16CF730200307652 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28861EB16CF730200307652 /* UIKit.framework */; };
 		D28861EE16CF730200307652 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28861ED16CF730200307652 /* Foundation.framework */; };
 		D28861F016CF730200307652 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28861EF16CF730200307652 /* CoreGraphics.framework */; };
@@ -41,10 +40,9 @@
 		2117A9FD199AD4DF006A9BAF /* VanTableViewFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VanTableViewFoundation.m; sourceTree = "<group>"; };
 		2117A9FF199ADE3F006A9BAF /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		2117AA00199ADE3F006A9BAF /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
-		21858299199B9FE60078A5E9 /* shadow_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shadow_top.png; sourceTree = "<group>"; };
-		2185829A199B9FE60078A5E9 /* shadow_bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shadow_bottom.png; sourceTree = "<group>"; };
-		2185829B199B9FE60078A5E9 /* shadow_bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shadow_bottom@2x.png"; sourceTree = "<group>"; };
-		2185829C199B9FE60078A5E9 /* shadow_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shadow_top@2x.png"; sourceTree = "<group>"; };
+		218582A1199C5BF10078A5E9 /* shadow_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shadow_top.png; sourceTree = "<group>"; };
+		218582A2199C5BF10078A5E9 /* shadow_bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shadow_bottom.png; sourceTree = "<group>"; };
+		218582A3199C5BF10078A5E9 /* menu_separator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_separator.png; sourceTree = "<group>"; };
 		D28861E716CF730200307652 /* VanTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VanTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D28861EB16CF730200307652 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D28861ED16CF730200307652 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -116,10 +114,9 @@
 		D28861F116CF730200307652 /* VanTableView */ = {
 			isa = PBXGroup;
 			children = (
-				21858299199B9FE60078A5E9 /* shadow_top.png */,
-				2185829A199B9FE60078A5E9 /* shadow_bottom.png */,
-				2185829B199B9FE60078A5E9 /* shadow_bottom@2x.png */,
-				2185829C199B9FE60078A5E9 /* shadow_top@2x.png */,
+				218582A1199C5BF10078A5E9 /* shadow_top.png */,
+				218582A2199C5BF10078A5E9 /* shadow_bottom.png */,
+				218582A3199C5BF10078A5E9 /* menu_separator.png */,
 				D288620E16CF731900307652 /* VanTableView */,
 				D28861FA16CF730200307652 /* AppDelegate.h */,
 				D28861FB16CF730200307652 /* AppDelegate.m */,
@@ -222,13 +219,12 @@
 			files = (
 				D28861F616CF730200307652 /* InfoPlist.strings in Resources */,
 				D28861FE16CF730200307652 /* Default.png in Resources */,
-				218582A0199B9FE60078A5E9 /* shadow_top@2x.png in Resources */,
-				2185829E199B9FE60078A5E9 /* shadow_bottom.png in Resources */,
-				2185829F199B9FE60078A5E9 /* shadow_bottom@2x.png in Resources */,
+				218582A6199C5BF10078A5E9 /* menu_separator.png in Resources */,
+				218582A5199C5BF10078A5E9 /* shadow_bottom.png in Resources */,
 				D288620016CF730200307652 /* Default@2x.png in Resources */,
 				D288620216CF730200307652 /* Default-568h@2x.png in Resources */,
 				D288620816CF730200307652 /* ViewController.xib in Resources */,
-				2185829D199B9FE60078A5E9 /* shadow_top.png in Resources */,
+				218582A4199C5BF10078A5E9 /* shadow_top.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

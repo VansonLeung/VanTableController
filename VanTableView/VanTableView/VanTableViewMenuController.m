@@ -150,6 +150,39 @@
     }
 }
 
+
+
+
+-(void)refreshMenuItemWithKey:(NSString*)key withinGroupNamed:(NSString*)groupName
+{
+    
+    VanTableViewMenuItem * targetItem = nil;
+    int targetIndex = 0;
+    
+    for (int i = 0; i < [self.array count]; i++)
+    {
+        VanTableViewMenuItem * item = [self.array objectAtIndex: i];
+        
+        if ([item.key isEqualToString: key]
+            && [item.groupName isEqualToString: groupName])
+        {
+            targetItem = item;
+            targetIndex = i;
+            break;
+        }
+    }
+    
+    if (targetItem)
+    {
+        targetItem.isModified = YES;
+        NSLog(@"Refreshing... %d", targetIndex);
+        [controller_ manipulateArray: self.array];
+    }
+}
+
+
+
+
 -(void)expandTargetItem:(VanTableViewMenuItem *)targetItem targetIndex:(int)targetIndex
 {
     NSString * childGroupName = targetItem.next;

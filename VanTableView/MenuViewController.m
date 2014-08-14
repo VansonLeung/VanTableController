@@ -61,9 +61,9 @@
 {
     [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [tableView setBackgroundColor:
-     [UIColor colorWithRed:226.0f/255.0f
-                     green:29.0f/255.0f
-                      blue:38.0f/255.0f
+     [UIColor colorWithRed:238.0f/255.0f
+                     green:77.0f/255.0f
+                      blue:88.0f/255.0f
                      alpha:1]];
 
     
@@ -79,13 +79,28 @@
     
     [[cell viewWithTag: -101] removeFromSuperview];
     [[cell viewWithTag: -102] removeFromSuperview];
+    [[cell viewWithTag: -103] removeFromSuperview];
     
     if ([item.groupName isEqualToString:@"root"] && ![item isExpanded])
     {
+        if ([menuController_.array count] > indexPath.row + 1)
+        {
+            VanTableViewMenuItem * nextItem = [menuController_.array objectAtIndex:indexPath.row + 1];
+            if ([nextItem.groupName isEqualToString:@"root"] && !nextItem.isExpanded)
+            {
+                UIImageView * shadow = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"menu_separator.png"]];
+                [shadow setFrame:CGRectMake(10, 54.0,
+                                            cell.bounds.size.width - 20, 2)];
+                [shadow setContentMode:UIViewContentModeScaleToFill];
+                [shadow setTag: -103];
+                [cell addSubview: shadow];
+            }
+        }
+        
         [cell.contentView setBackgroundColor:
-         [UIColor colorWithRed:226.0f/255.0f
-                         green:29.0f/255.0f
-                          blue:38.0f/255.0f
+         [UIColor colorWithRed:238.0f/255.0f
+                         green:77.0f/255.0f
+                          blue:88.0f/255.0f
                          alpha:1]];
         
         [cell.textLabel setTextColor: [UIColor whiteColor]];
@@ -95,13 +110,11 @@
     else
     {
         [cell.contentView setBackgroundColor:
-         [UIColor colorWithRed:255.0f/255.0f
-                         green:255.0f/255.0f
-                          blue:255.0f/255.0f
+         [UIColor colorWithRed:245.0f/255.0f
+                         green:245.0f/255.0f
+                          blue:245.0f/255.0f
                          alpha:1]];
 
-        [cell.textLabel setTextColor: [UIColor grayColor]];
-        [cell.detailTextLabel setTextColor: [UIColor grayColor]];
         [cell.textLabel setBackgroundColor: [UIColor clearColor]];
         [cell.detailTextLabel setBackgroundColor: [UIColor clearColor]];
         [cell setBackgroundColor: [UIColor clearColor]];
@@ -110,26 +123,38 @@
         {
             UIImageView * shadow = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"shadow_top.png"]];
             [shadow setFrame:CGRectMake(0, 0,
-                                           cell.bounds.size.width, 5)];
+                                           cell.bounds.size.width, 10)];
             [shadow setContentMode:UIViewContentModeScaleToFill];
             [shadow setTag: -101];
             [cell addSubview: shadow];
             
             [cell.textLabel setFont: [UIFont fontWithName:@"HelveticaNeue" size:16]];
+            [cell.textLabel setTextColor: [UIColor grayColor]];
+            [cell.detailTextLabel setTextColor: [UIColor grayColor]];
         }
         else
         {
             if (item.isLast)
             {
                 UIImageView * shadow = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"shadow_bottom.png"]];
-                [shadow setFrame:CGRectMake(0, 38 - 5,
-                                               cell.bounds.size.width, 5)];
+                [shadow setFrame:CGRectMake(0, 38 - 10,
+                                               cell.bounds.size.width, 10)];
                 [shadow setContentMode:UIViewContentModeScaleToFill];
                 [shadow setTag: -102];
                 [cell addSubview: shadow];
             }
             
-            [cell.textLabel setFont: [UIFont fontWithName:@"HelveticaNeue" size:13]];
+            [cell.textLabel setFont: [UIFont fontWithName:@"HelveticaNeue" size:12]];
+            [cell.textLabel setTextColor:
+             [UIColor colorWithRed:238.0f/255.0f
+                             green:77.0f/255.0f
+                              blue:88.0f/255.0f
+                             alpha:1]];
+            [cell.detailTextLabel setTextColor:
+             [UIColor colorWithRed:238.0f/255.0f
+                             green:77.0f/255.0f
+                              blue:88.0f/255.0f
+                             alpha:1]];
         }
     }
     
@@ -142,23 +167,33 @@
     [tableView deselectRowAtIndexPath: indexPath animated:YES];
     VanTableViewMenuItem * item = [menuController_.array objectAtIndex:indexPath.row];
 
-    for (int i = 0; i < [menuController_.array count]; i++)
+    if ([item.groupName isEqualToString:@"root"])
     {
-        VanTableViewMenuItem * _item = [menuController_.array objectAtIndex:i];
-        if (_item.isExpanded
-            && (
-                ![_item.key isEqualToString: item.key]
-                || ![_item.groupName isEqualToString: item.groupName]
-                )
-            )
+        
+        for (int i = 0; i < [menuController_.array count]; i++)
         {
-            [menuController_ collapseTargetItem: _item];
+            VanTableViewMenuItem * _item = [menuController_.array objectAtIndex:i];
+            if (_item.isExpanded
+                && (
+                    ![_item.key isEqualToString: item.key]
+                    || ![_item.groupName isEqualToString: item.groupName]
+                    )
+                )
+            {
+                [menuController_ collapseTargetItem: _item];
+            }
+            
+            NSLog(@"%@ %@ %@ %@", _item.key, _item.groupName, item.key, item.groupName);
         }
         
-        NSLog(@"%@ %@ %@ %@", _item.key, _item.groupName, item.key, item.groupName);
+        [menuController_ toggleMenuItemWithKey:item.key withinGroupNamed: item.groupName];
+
     }
     
-    [menuController_ toggleMenuItemWithKey:item.key withinGroupNamed: item.groupName];
+    else
+    {
+        // do something here
+    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
